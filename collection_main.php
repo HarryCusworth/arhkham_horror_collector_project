@@ -62,7 +62,7 @@ function getScenarioNames($cycleArray)
 }
 
 $cycleArray = getCampaignNames();
-echo getScenarioNames($cycleArray);
+getScenarioNames($cycleArray);
 ?>
 
 </body>

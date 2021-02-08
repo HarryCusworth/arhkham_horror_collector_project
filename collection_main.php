@@ -27,7 +27,7 @@ function getCampaignNames()
     foreach ($results as $cycleName) {
         array_push($cycleArray, $cycleName["cycle"]);
     }
-//    var_dump($cycleArray);
+
     return $cycleArray;
 }
 

@@ -1,1 +1,60 @@
 
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link, a:visited {
+    color: #CE3B45;
+}
+
+a:hover {
+    color: #215097;
+}
+
+html {
+    font-size: 16px;
+    font-family: "verdana", "microsoft-sans-serif", sans-serif;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+Header {
+    padding: 60px;
+    text-align: center;
+    background: #1abc9c;
+    display:flex;
+    flex-direction: column-reverse;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 25px;
+
+}
+
+.mainHeading{
+    padding:15px;
+    color: white;
+    font-size:4rem
+}
+.box {
+    border: solid;
+    background-color:gray;
+    margin:15px;
+
+}
+
+.flexContainer {
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+
+}
+.addButton{
+    font-size:.9rem;
+    border:solid;
+}

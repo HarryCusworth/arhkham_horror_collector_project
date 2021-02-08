@@ -6,4 +6,4 @@ use PHPUnit\Framework\TestCase;
 
 class Collection_campaign extends TestCase
 {
-}<?php
+}

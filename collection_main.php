@@ -5,14 +5,13 @@
     <link rel="stylesheet" type="text/css" href="normalize.css">
     <link rel="stylesheet" type="text/css" href="main_stylesheet.css">
 </head>
+
+
 <body>
 <header class="banner">
     <a class="addButton" href="addCampaign.php"> Add new Campaign</a>
     <div class="mainHeading"> Arkham Campaign Manager</div>
 </header>
-</body>
-
-</html>
 
 <?php
 
@@ -34,9 +33,9 @@ function getCampNames()
 
 function getScenarioNames($cycleArray)
 {
-
+echo "<div class='flexContainer'>";
     foreach ($cycleArray as $cycle) {
-
+        echo "<div class='box'><h2>$cycle</h2><br>";
         $db = new PDO('mysql:host=db; dbname=arkham_lcg_scenarios', 'root', 'password');
         $query = "SELECT *  FROM `scenarios` WHERE `cycle` = :cycle ORDER BY `position`;";
         $campaign = $db->prepare($query);
@@ -45,12 +44,26 @@ function getScenarioNames($cycleArray)
         $campaign->execute($params);
 
         $results = $campaign->fetchAll();
-        echo "brake point?<br><br>";
         foreach ($results as $scenario) {
-            echo "<br>".var_dump($scenario)."<br>";
+            echo "<h3>".$scenario['name']."</h3><br>";
+
+                if(isset($scenario['completed'])){
+                    echo "completed<br>";
+                }
+                if(isset($scenario['owned'])) {
+                    echo "owned<br>";
+                }
         }
-//        echo $scenario['name'] . "complete: " . $scenario['completed'] . "owned: " . $scenario['owned'];
+        echo "</div>" ;
+//
     }
+
+echo "</div>";
 }
   $cycleArray = getCampNames();
 echo getScenarioNames($cycleArray);
+?>
+
+</body>
+
+</html>

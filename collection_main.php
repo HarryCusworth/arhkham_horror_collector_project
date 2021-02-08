@@ -16,7 +16,7 @@
 <?php
 
 
-function getCampNames()
+function getCampaignNames()
 {
     $db = new PDO('mysql:host=db; dbname=arkham_lcg_scenarios', 'root', 'password');
     $campaigns = $db->prepare("SELECT DISTINCT `cycle` FROM `scenarios`;");
@@ -28,12 +28,12 @@ function getCampNames()
         array_push($cycleArray, $cycleName["cycle"]);
     }
 //    var_dump($cycleArray);
-        return $cycleArray;
+    return $cycleArray;
 }
 
 function getScenarioNames($cycleArray)
 {
-echo "<div class='flexContainer'>";
+    echo "<div class='flexContainer'>";
     foreach ($cycleArray as $cycle) {
         echo "<div class='box'><h2>$cycle</h2><br>";
         $db = new PDO('mysql:host=db; dbname=arkham_lcg_scenarios', 'root', 'password');
@@ -45,22 +45,23 @@ echo "<div class='flexContainer'>";
 
         $results = $campaign->fetchAll();
         foreach ($results as $scenario) {
-            echo "<h3>".$scenario['name']."</h3><br>";
+            echo "<h3>" . $scenario['name'] . "</h3><br>";
 
-                if(isset($scenario['completed'])){
-                    echo "completed<br>";
-                }
-                if(isset($scenario['owned'])) {
-                    echo "owned<br>";
-                }
+            if (isset($scenario['completed'])) {
+                echo "completed<br>";
+            }
+            if (isset($scenario['owned'])) {
+                echo "owned<br>";
+            }
         }
-        echo "</div>" ;
+        echo "</div>";
 //
     }
 
-echo "</div>";
+    echo "</div>";
 }
-  $cycleArray = getCampNames();
+
+$cycleArray = getCampaignNames();
 echo getScenarioNames($cycleArray);
 ?>
 

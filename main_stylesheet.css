@@ -109,23 +109,18 @@ h2{
 
 }
 
-@media only screen and (max-width:800px) {
+@media screen and (max-width:800px) {
     .flexContainer {
         flex-direction: column;
         flex-wrap: wrap;
     }
     .box {
+        display: block;
         padding-bottom: 50px;
-        justify-content: space-evenly;
     }
-    .mainHeading{
+    .mainHeading {
         padding:5px;
         font-size: 2rem;
-    }
-    .box {
-        border: solid;
-        background-color: #D3D3D3;
-        margin: 15px;
     }
 
 }

@@ -9,8 +9,7 @@
 
 <body>
 <header class="banner">
-    <a class="addButton" href="addCampaign.php"> Add new Campaign</a>
-    <div class="mainHeading"> Arkham Campaign Manager</div>
+    <h1 class="mainHeading"> Arkham Campaign Manager</h1>
 </header>
 
 <?php
@@ -35,7 +34,7 @@ function getScenarioNames($cycleArray)
 {
     echo "<div class='flexContainer'>";
     foreach ($cycleArray as $cycle) {
-        echo "<div class='box'><h2>$cycle</h2><br>";
+        echo "<div class='box'><h2>$cycle</h2>";
         $db = new PDO('mysql:host=db; dbname=arkham_lcg_scenarios', 'root', 'password');
         $query = "SELECT *  FROM `scenarios` WHERE `cycle` = :cycle ORDER BY `position`;";
         $campaign = $db->prepare($query);
@@ -45,14 +44,24 @@ function getScenarioNames($cycleArray)
 
         $results = $campaign->fetchAll();
         foreach ($results as $scenario) {
-            echo "<h3>" . $scenario['name'] . "</h3><br>";
+            echo "<div class='scenarioContainer'><h3>  " . $scenario['name'] . "</h3>";
+
+            if (isset($scenario['owned'])) {
+                echo "<div class='scenarioContent'>Owned</div>";
+            }
+
+            if (!isset($scenario['owned'])) {
+                echo "<div class='scenarioContentNull'>Not Owned</div>";
+            }
 
             if (isset($scenario['completed'])) {
-                echo "completed<br>";
+                echo "<div class='scenarioContent'>Played</div>";
             }
-            if (isset($scenario['owned'])) {
-                echo "owned<br>";
+            if (!isset($scenario['completed'])) {
+                echo "<div class='scenarioContentNull'>Not Played</div>";
             }
+
+            echo "</div>";
         }
         echo "</div>";
 //

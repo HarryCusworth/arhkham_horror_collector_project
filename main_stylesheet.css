@@ -17,7 +17,7 @@ a:hover {
 
 html {
     font-size: 16px;
-    font-family: "verdana", "microsoft-sans-serif", sans-serif;
+    font-family: "Times New Roman";
 }
 body{
     margin: 0px;
@@ -27,34 +27,106 @@ body{
 Header {
     padding: 60px;
     text-align: center;
-    background: #1abc9c;
-    display:flex;
+    background: #6B3488;
+    display: flex;
     flex-direction: column-reverse;
-    margin-left: 5%;
-    margin-right: 5%;
     margin-bottom: 25px;
 
+}
+
+h3{
+    margin: 5px;
+}
+
+h2{
+    margin: 5px;
+    padding-bottom: 10px;
 }
 
 .mainHeading{
     padding:15px;
     color: white;
-    font-size:4rem
+    font-size: 4rem;
+    font-family: gothic;
 }
 .box {
     border: solid;
     background-color: #D3D3D3;
-    margin:15px;
+    margin: 15px;
+    flex-grow:4;
+    display: flex;
+    flex-direction: column;
+    justify-items: left;
 
 }
 
 .flexContainer {
-    display:flex;
-    flex-direction:row;
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
 
 }
 .addButton{
-    font-size:.9rem;
-    border:solid;
+    font-size: .9rem;
+    border: solid;
 }
+
+.scenarioContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    padding-bottom: 5px;
+
+}
+
+.scenarioContent {
+    width:20%;
+    min-width:60px;
+    border: solid;
+    border-width:2px;
+    margin: 2%;
+    padding: 3px;
+    border-radius: 5px;
+    background-color: #6B3488;
+    color: white;
+    font-size: .9rem;
+    text-align: center;
+}
+
+.scenarioContentNull {
+    width:30%;
+    min-width:30px;
+    border: solid;
+    border-width: 1px;
+    margin: 2%;
+    padding: 3px;
+    border-radius: 5px;
+    background-color: #D3D3D3 ;
+    color: black;
+    font-size: .8em;
+    text-align: center;
+
+}
+
+@media only screen and (max-width:800px) {
+    .flexContainer {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .box {
+        padding-bottom: 50px;
+        justify-content: space-evenly;
+    }
+    .mainHeading{
+        padding:5px;
+        font-size: 2rem;
+    }
+    .box {
+        border: solid;
+        background-color: #D3D3D3;
+        margin: 15px;
+    }
+
+}
+

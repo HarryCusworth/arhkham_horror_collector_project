@@ -60,6 +60,7 @@ h3 {
 .addButton {
     font-size: .9rem;
     border: solid;
+    background-color: red;
 }
 
 .scenarioContainer {

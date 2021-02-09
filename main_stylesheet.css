@@ -1,10 +1,5 @@
-
 * {
     box-sizing: border-box;
-}
-
-a {
-    text-decoration: none;
 }
 
 html {
@@ -34,14 +29,19 @@ h1 {
 }
 
 h2 {
-    margin: 5px;
     padding-bottom: 10px;
+    height:auto;
 }
 
 h3 {
     margin: 5px;
 }
 
+.navBar{
+    display:flex;
+    justify-content: right;
+
+}
 
 .box {
     border: solid;
@@ -50,7 +50,8 @@ h3 {
     flex-grow:4;
     display: flex;
     flex-direction: column;
-    justify-items: left;
+    justify-content: left;
+
 }
 
 .flexContainer {
@@ -58,18 +59,12 @@ h3 {
     flex-direction: row;
     justify-content: space-between;
 }
-
-.navBar {
-    display: flex;
-    justify-content: flex-end;
-}
-
 .addButton {
-    font-size: 1.2rem;
+    color: #6B3488;
+    font-size: 1.4em;
     border: solid;
-    color: white;
-    border-radius: 5px;
-
+    border-radius:5px;
+    background-color: white;
 }
 
 .scenarioContainer {
@@ -85,13 +80,13 @@ h3 {
     min-width:60px;
     border: solid;
     border-width:2px;
-    margin: 2%;
     padding: 3px;
     border-radius: 5px;
     background-color: #6B3488;
     color: white;
     font-size: .9rem;
     text-align: center;
+    margin: 5px;
 }
 
 .scenarioContentNull {
@@ -99,7 +94,7 @@ h3 {
     min-width:30px;
     border: solid;
     border-width: 1px;
-    margin: 2%;
+    margin: 5px;
     padding: 3px;
     border-radius: 5px;
     background-color: #D3D3D3 ;
@@ -116,7 +111,6 @@ h3 {
 
     .box {
         display: block;
-        padding-bottom: 50px;
     }
     .mainHeading {
         padding:5px;

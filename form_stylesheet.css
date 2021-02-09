@@ -1,0 +1,14 @@
+.form {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #D3D3D3;
+    border: 2px;
+    border-radius: 10px;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.formItem{
+    font-size: 1.3rem;
+}

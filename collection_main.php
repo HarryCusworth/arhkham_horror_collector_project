@@ -10,7 +10,11 @@
 <body>
 <header class="banner">
     <h1 class="mainHeading"> Arkham Campaign Manager</h1>
+    <div class="navBar">
+        <a href="collection_campaign.php" class="addButton">Add a Custom Campaign</a>
+    </div>
 </header>
+
 
 <?php
 
@@ -73,7 +77,7 @@ function getScenarioNames($cycleArray)
 $cycleArray = getCampaignNames();
 getScenarioNames($cycleArray);
 ?>
-
+<a href="collection_campaign.php" class="addButton">Add a Custom Campaign</a>
 </body>
 
 </html>

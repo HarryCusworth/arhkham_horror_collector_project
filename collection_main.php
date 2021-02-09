@@ -8,12 +8,11 @@
 
 
 <body>
-<header class="banner">
+<header>
     <h1 class="mainHeading"> Arkham Campaign Manager</h1>
 </header>
 
 <?php
-
 
 function getCampaignNames()
 {

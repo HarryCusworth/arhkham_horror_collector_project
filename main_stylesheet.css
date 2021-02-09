@@ -7,48 +7,41 @@ a {
     text-decoration: none;
 }
 
-a:link, a:visited {
-    color: #CE3B45;
-}
-
-a:hover {
-    color: #215097;
-}
-
 html {
     font-size: 16px;
-    font-family: "Times New Roman";
+    font-family: "Times New Roman", serif;
 }
-body{
+
+body {
     margin: 0px;
     padding: 0px;
 }
 
-Header {
+header {
     padding: 60px;
     text-align: center;
     background: #6B3488;
     display: flex;
     flex-direction: column-reverse;
     margin-bottom: 25px;
-
 }
 
-h3{
-    margin: 5px;
+h1 {
+    padding:15px;
+    color: white;
+    font-size: 4rem;
+    font-family: "Times New Roman", serif;
 }
 
-h2{
+h2 {
     margin: 5px;
     padding-bottom: 10px;
 }
 
-.mainHeading{
-    padding:15px;
-    color: white;
-    font-size: 4rem;
-    font-family: gothic;
+h3 {
+    margin: 5px;
 }
+
 .box {
     border: solid;
     background-color: #D3D3D3;
@@ -57,16 +50,14 @@ h2{
     display: flex;
     flex-direction: column;
     justify-items: left;
-
 }
 
 .flexContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
 }
-.addButton{
+.addButton {
     font-size: .9rem;
     border: solid;
 }
@@ -77,7 +68,6 @@ h2{
     justify-content: space-between;
     flex-wrap: nowrap;
     padding-bottom: 5px;
-
 }
 
 .scenarioContent {
@@ -106,7 +96,6 @@ h2{
     color: black;
     font-size: .8em;
     text-align: center;
-
 }
 
 @media screen and (max-width:800px) {
@@ -114,6 +103,7 @@ h2{
         flex-direction: column;
         flex-wrap: wrap;
     }
+
     .box {
         display: block;
         padding-bottom: 50px;

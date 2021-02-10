@@ -14,9 +14,11 @@
 
 <?php
 
-function getCampaignNames()
+$db = new PDO('mysql:host=db; dbname=arkham_lcg_scenarios', 'root', 'password');
+
+function getCampaignNames($db)
 {
-    $db = new PDO('mysql:host=db; dbname=arkham_lcg_scenarios', 'root', 'password');
+
     $campaigns = $db->prepare("SELECT DISTINCT `cycle` FROM `scenarios`;");
     $campaigns->setFetchMode(PDO::FETCH_ASSOC);
     $campaigns->execute();
@@ -29,12 +31,11 @@ function getCampaignNames()
     return $cycleArray;
 }
 
-function getScenarioNames($cycleArray)
+function getScenarioNames(array $cycleArray,$db)
 {
     echo "<div class='flexContainer'>";
     foreach ($cycleArray as $cycle) {
         echo "<div class='box'><h2>$cycle</h2>";
-        $db = new PDO('mysql:host=db; dbname=arkham_lcg_scenarios', 'root', 'password');
         $query = "SELECT *  FROM `scenarios` WHERE `cycle` = :cycle ORDER BY `position`;";
         $campaign = $db->prepare($query);
         $params = [':cycle' => $cycle];
@@ -65,12 +66,12 @@ function getScenarioNames($cycleArray)
         echo "</div>";
 //
     }
-
+    $columNames=$results[0];
     echo "</div>";
 }
 
-$cycleArray = getCampaignNames();
-getScenarioNames($cycleArray);
+$cycleArray = getCampaignNames($db);
+getScenarioNames($cycleArray,$db);
 ?>
 
 </body>

@@ -4,8 +4,6 @@ require '../collection_main.php';
 
 use PHPUnit\Framework\TestCase;
 
-
-$db = new PDO('mysql:host=db; dbname=arkham_lcg_scenarios', 'root', 'password');
 class Collection_main extends TestCase
 {
 //testing the first function that is supposed to return an ordered array of the cycle names

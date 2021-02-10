@@ -31,10 +31,10 @@ function printResults(array $bigArray, array $cycleArray)
     $feedBack = '<div class="flexContainer">';
 
     foreach ($cycleArray as $cycle) {
-        $feedBack .= '<div class="box"><h2>$cycle</h2>';
+        $feedBack .= "<div class='box'><h2>$cycle</h2>";
         foreach ($bigArray as $scenario) {
             if ($scenario['cycle'] === $cycle) {
-                $feedBack .= '<div class="scenarioContainer"><h3>  " . $scenario["name"] . "</h3>';
+                $feedBack .= "<div class='scenarioContainer'><h3>  " . $scenario['name'] . "</h3>";
 
                 if (isset($scenario['owned'])) {
                     $feedBack .= '<div class="scenarioContent">Owned</div>';

@@ -14,6 +14,7 @@
 
 <?php
 require('collection_functions.php');
+
 $db = new PDO('mysql:host=db; dbname=arkham_lcg_scenarios', 'root', 'password');
 
 

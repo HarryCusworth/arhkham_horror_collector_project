@@ -1,6 +1,5 @@
 <?php
 
-$db = new PDO('mysql:host=db; dbname=arkham_lcg_scenarios', 'root', 'password');
 
 function getCampaignNames($db)
 {
@@ -29,36 +28,37 @@ function getScenariosSimple($db)
 
 function printResults(array $bigArray, array $cycleArray)
 {
-    $feedBack = "<div class='flexContainer'>";
+    $feedBack = '<div class="flexContainer">';
 
     foreach ($cycleArray as $cycle) {
-        $feedBack .= "<div class='box'><h2>$cycle</h2>";
+        $feedBack .= '<div class="box"><h2>$cycle</h2>';
         foreach ($bigArray as $scenario) {
             if ($scenario['cycle'] === $cycle) {
-                $feedBack .= "<div class='scenarioContainer'><h3>  " . $scenario['name'] . "</h3>";
+                $feedBack .= '<div class="scenarioContainer"><h3>  " . $scenario["name"] . "</h3>';
 
                 if (isset($scenario['owned'])) {
-                    $feedBack .= "<div class='scenarioContent'>Owned</div>";
+                    $feedBack .= '<div class="scenarioContent">Owned</div>';
                 }
 
-                if (!isset($scenario['owned'])) {
-                    $feedBack .= "<div class='scenarioContentNull'>Not Owned</div>";
+                else {
+                    $feedBack .= '<div class="scenarioContentNull">Not Owned</div>';
                 }
 
                 if (isset($scenario['completed'])) {
-                    $feedBack .= "<div class='scenarioContent'>Played</div>";
-                }
-                if (!isset($scenario['completed'])) {
-                    $feedBack .= "<div class='scenarioContentNull'>Not Played</div>";
+                    $feedBack .= '<div class="scenarioContent">Played</div>';
                 }
 
-                $feedBack .= "</div>";
+                else {
+                    $feedBack .= '<div class="scenarioContentNull">Not Played</div>';
+                }
+
+                $feedBack .= '</div>';
             }
 
         }
 
-        $feedBack .= "</div>";
+        $feedBack .= '</div>';
     }
-    $feedBack .= "</div>";
+    $feedBack .= '</div>';
     return $feedBack;
 }

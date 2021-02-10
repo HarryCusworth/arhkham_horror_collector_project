@@ -17,7 +17,6 @@ require('collection_functions.php');
 $db = new PDO('mysql:host=db; dbname=arkham_lcg_scenarios', 'root', 'password');
 
 
-
 $cycleArray = getCampaignNames($db);
 $bigArray = getScenariosSimple($db);
 $printOut = printResults($bigArray, $cycleArray);

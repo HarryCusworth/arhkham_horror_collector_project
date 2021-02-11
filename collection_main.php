@@ -8,8 +8,30 @@ $cycleArray = getCampaignNames($db);
 $bigArray = getScenarios($db);
 $printOut = printResults($bigArray, $cycleArray);
 
-?>
 
+if (isset($_POST['scenarioToNotOwn'])){
+    $toNotOwn = $_POST['scenarioToNotOwn'];
+    scenarioToNotOwn($db,$toNotOwn);
+}
+
+if (isset($_POST['scenarioToOwn'])){
+    $toOwn = $_POST['scenarioToOwn'];
+    scenarioToOwn($db,$toOwn);
+}
+
+if (isset($_POST['scenarioToNotPlayed'])){
+    $toNotPlayed = $_POST['scenarioToNotPlayed'];
+    scenarioToNotPlayed($db,$toNotPlayed);
+}
+
+if (isset($_POST['scenarioToPlayed'])){
+    $toPlayed = $_POST['scenarioToPlayed'];
+    scenarioToPlayed($db,$toPlayed);
+}
+
+
+
+?>
 <html lang="en-GB">
 <head>
     <title>Arkham Horror LCG Collection Manager</title>
@@ -26,13 +48,8 @@ $printOut = printResults($bigArray, $cycleArray);
 
 
 <?php
+
 echo $printOut;
-if (isset($_POST['scenarioToNotOwn'])){
-    $toNotOwn = $_POST['scenarioToNotOwn'];
-    header("Refresh:0");
-    scenerioToNotOwn($db,$toNotOwn);
-}
-var_dump($_POST);
 
 ?>
 

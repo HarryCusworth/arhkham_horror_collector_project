@@ -22,7 +22,7 @@ header {
 }
 
 h1 {
-    padding:15px;
+    padding: 15px;
     color: white;
     font-size: 4rem;
     font-family: "Times New Roman", serif;
@@ -30,7 +30,7 @@ h1 {
 
 h2 {
     padding-bottom: 10px;
-    height:auto;
+    height: auto;
     margin-left: 5px;
 }
 
@@ -39,7 +39,7 @@ h3 {
 }
 
 .navBar{
-    display:flex;
+    display: flex;
     justify-content: right;
 }
 
@@ -47,7 +47,7 @@ h3 {
     border: solid;
     background-color: #D3D3D3;
     margin: 15px;
-    flex-grow:4;
+    flex-grow: 4;
     display: flex;
     flex-direction: column;
     justify-content: left;
@@ -63,7 +63,7 @@ h3 {
     color: #6b3488;
     font-size: 1.4em;
     border: 10px solid black;
-    border-radius:5px;
+    border-radius: 5px;
     background-color: white;
 }
 
@@ -113,7 +113,7 @@ h3 {
         width:auto;
     }
     .mainHeading {
-        padding:5px;
+        padding: 5px;
         font-size: 2rem;
     }
 

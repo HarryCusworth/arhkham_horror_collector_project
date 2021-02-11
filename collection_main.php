@@ -1,12 +1,12 @@
 <?php
-require('collection_functions.php');
+require_once('collection_functions.php');
 
 $db = new PDO('mysql:host=db; dbname=arkham_lcg_scenarios', 'root', 'password');
 
 
 $cycleArray = getCampaignNames($db);
-$bigArray = getScenarios($db);
-$printOut = printResults($bigArray, $cycleArray);
+$allScenarios = getScenarios($db);
+$printOut = printResults($allScenarios, $cycleArray);
 
 
 if (isset($_POST['scenarioToNotOwn'])){

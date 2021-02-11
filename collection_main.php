@@ -49,6 +49,7 @@ if (isset($_POST['scenarioToPlayed'])){
 
 <?php
 
+
 echo $printOut;
 
 ?>

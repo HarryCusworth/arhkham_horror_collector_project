@@ -27,27 +27,23 @@ function getScenarios($db)
 
 function scenarioToNotOwn($db,$toNotOwn){
     $insertToNotOwn = $db->prepare("UPDATE scenarios SET owned = 0 WHERE `name` = '$toNotOwn';");
-//  $insertToNotOwn ->bind_param(':name', $toNotOwn);
     $insertToNotOwn ->execute();
     header("Refresh:0");
 }
 
 function scenarioToOwn($db,$toOwn){
     $insertToNotOwn = $db->prepare("UPDATE scenarios SET owned = 1 WHERE `name` = '$toOwn';");
-//  $insertToNotOwn ->bind_param(':name', $toNotOwn);
     $insertToNotOwn ->execute();
     header("Refresh:0");
 }
 
 function scenarioToNotPlayed($db,$toNotPlayed){
     $insertToNotOwn = $db->prepare("UPDATE scenarios SET completed = 0 WHERE `name` = '$toNotPlayed';");
-//  $insertToNotOwn ->bind_param(':name', $toNotOwn);
     $insertToNotOwn ->execute();
     header("Refresh:0");
 }
 function scenarioToPlayed($db,$toPlayed){
     $insertToNotOwn = $db->prepare("UPDATE scenarios SET completed = 1 WHERE `name` = '$toPlayed';");
-//  $insertToNotOwn ->bind_param(':name', $toNotOwn);
     $insertToNotOwn ->execute();
     header("Refresh:0");
 }

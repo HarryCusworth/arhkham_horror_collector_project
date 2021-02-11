@@ -1,8 +1,7 @@
 <?php
 
 
-function getCampaignNames($db)
-{
+function getCampaignNames($db) {
 
     $campaigns = $db->prepare("SELECT DISTINCT `cycle` FROM `scenarios`;");
     $campaigns->setFetchMode(PDO::FETCH_ASSOC);
@@ -15,8 +14,7 @@ function getCampaignNames($db)
     return $cycleArray;
 }
 
-function getScenarios($db)
-{
+function getScenarios($db) {
     $queryString = "SELECT * FROM `scenarios` ORDER BY `position`;";
     $query = $db->prepare($queryString);
     $query->setFetchMode(PDO::FETCH_ASSOC);
@@ -25,24 +23,24 @@ function getScenarios($db)
     return $bigArray;
 }
 
-function scenarioToNotOwn($db,$toNotOwn){
+function scenarioToNotOwn($db,$toNotOwn) {
     $insertToNotOwn = $db->prepare("UPDATE scenarios SET owned = 0 WHERE `name` = '$toNotOwn';");
     $insertToNotOwn ->execute();
     header("Refresh:0");
 }
 
-function scenarioToOwn($db,$toOwn){
+function scenarioToOwn($db,$toOwn) {
     $insertToNotOwn = $db->prepare("UPDATE scenarios SET owned = 1 WHERE `name` = '$toOwn';");
     $insertToNotOwn ->execute();
     header("Refresh:0");
 }
 
-function scenarioToNotPlayed($db,$toNotPlayed){
+function scenarioToNotPlayed($db,$toNotPlayed) {
     $insertToNotOwn = $db->prepare("UPDATE scenarios SET completed = 0 WHERE `name` = '$toNotPlayed';");
     $insertToNotOwn ->execute();
     header("Refresh:0");
 }
-function scenarioToPlayed($db,$toPlayed){
+function scenarioToPlayed($db,$toPlayed) {
     $insertToNotOwn = $db->prepare("UPDATE scenarios SET completed = 1 WHERE `name` = '$toPlayed';");
     $insertToNotOwn ->execute();
     header("Refresh:0");
@@ -61,7 +59,7 @@ function printResults(array $bigArray, array $cycleArray)
                 $scenarioOwned = $scenario['owned'];
                 $scenarioCompleted = $scenario['completed'];
                 if (isset($scenario['position'])) {
-                    $scenarioPosistion =$scenario['position'].". ";
+                    $scenarioPosistion = $scenario['position'].". ";
 
                 } else $scenarioPosistion = $scenario['position'];
 

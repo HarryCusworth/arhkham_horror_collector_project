@@ -20,7 +20,7 @@ class Collection_functions extends TestCase
         $hugeFakeArray= [['name' => 'first fake', 'cycle'=> 'first Camp', 'completed'=> NULL, 'owned'=>NULL],['name' => 'other fake', 'cycle'=> 'second Camp', 'completed'=> True, 'owned'=>NULL]];
         $actualOutput = printResults($hugeFakeArray, $smallArray);
         $expectedOutput="<div class=\"flexContainer\"><div class='box'><h2>first Camp</h2><div class='scenarioContainer'><h3>  first fake</h3><div class=\"scenarioContentNull\">Not Owned</div><div class=\"scenarioContentNull\">Not Played</div></div></div><div class='box'><h2>second Camp</h2><div class='scenarioContainer'><h3>  other fake</h3><div class=\"scenarioContentNull\">Not Owned</div><div class=\"scenarioContent\">Played</div></div></div></div>";
-            $this->assertEquals($expectedOutput,$actualOutput);
+        $this->assertEquals($expectedOutput,$actualOutput);
     }
 
 

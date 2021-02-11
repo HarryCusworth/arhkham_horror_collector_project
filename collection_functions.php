@@ -76,16 +76,16 @@ function printResults(array $allScenarios, array $cycleArray)
 
                 if ($scenarioOwned === '1') {
 
-                    $output .= "<form action='collection_main.php' method='post'><button class='scenarioContent' type='submit' name='scenarioToNotOwn' value='$scenarioName'>Owned</button></form>";
+                    $output .= "<form action='index.php' method='post'><button class='scenarioContent' type='submit' name='scenarioToNotOwn' value='$scenarioName'>Owned</button></form>";
                 } else {
 
-                    $output .= "<form action='collection_main.php' method='post'><button class='scenarioContentNull' type='submit' name='scenarioToOwn' value='$scenarioName'>Not Owned</button></form>";
+                    $output .= "<form action='index.php' method='post'><button class='scenarioContentNull' type='submit' name='scenarioToOwn' value='$scenarioName'>Not Owned</button></form>";
                 }
 
                 if ($scenarioCompleted == 1) {
-                    $output .= "<form action='collection_main.php' method='post'><button class='scenarioContent' type='submit' name='scenarioToNotPlayed' value='$scenarioName'>Played</button></form>";
+                    $output .= "<form action='index.php' method='post'><button class='scenarioContent' type='submit' name='scenarioToNotPlayed' value='$scenarioName'>Played</button></form>";
                 } else {
-                    $output .= "<form action='collection_main.php' method='post'><button class='scenarioContentNull' type='submit' name='scenarioToPlayed' value='$scenarioName'>Not Played</button></form>";
+                    $output .= "<form action='index.php' method='post'><button class='scenarioContentNull' type='submit' name='scenarioToPlayed' value='$scenarioName'>Not Played</button></form>";
                 }
 
                 $output .= '</div>';

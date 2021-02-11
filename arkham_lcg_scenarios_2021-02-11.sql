@@ -26,15 +26,15 @@
 DROP TABLE IF EXISTS `scenarios`;
 
 CREATE TABLE `scenarios` (
-                             `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-                             `name` varchar(50) DEFAULT NULL,
-                             `cycle` varchar(50) DEFAULT NULL,
-                             `position` tinyint(2) DEFAULT NULL,
-                             `standalone` tinyint(1) DEFAULT NULL,
-                             `owned` tinyint(1) DEFAULT NULL,
-                             `completed` tinyint(1) DEFAULT NULL,
-                             `product` varchar(50) DEFAULT NULL,
-                             PRIMARY KEY (`id`)
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `cycle` varchar(50) DEFAULT NULL,
+  `position` tinyint(2) DEFAULT NULL,
+  `standalone` tinyint(1) DEFAULT NULL,
+  `owned` tinyint(1) DEFAULT NULL,
+  `completed` tinyint(1) DEFAULT NULL,
+  `product` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `scenarios` WRITE;

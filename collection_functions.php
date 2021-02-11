@@ -25,6 +25,29 @@ function getScenariosSimple($db)
     return $bigArray;
 }
 
+function scenarioToNotOwn($db,$toNotOwn){
+    $insertToNotOwn = $db->prepare("UPDATE scenarios SET owned = 0 WHERE `name` = '$toNotOwn';");
+    $insertToNotOwn ->execute();
+    header("Refresh:0");
+}
+
+function scenarioToOwn($db,$toOwn){
+    $insertToNotOwn = $db->prepare("UPDATE scenarios SET owned = 1 WHERE `name` = '$toOwn';");
+    $insertToNotOwn ->execute();
+    header("Refresh:0");
+}
+
+function scenarioToNotPlayed($db,$toNotPlayed){
+    $insertToNotOwn = $db->prepare("UPDATE scenarios SET completed = 0 WHERE `name` = '$toNotPlayed';");
+    $insertToNotOwn ->execute();
+    header("Refresh:0");
+}
+function scenarioToPlayed($db,$toPlayed){
+    $insertToNotOwn = $db->prepare("UPDATE scenarios SET completed = 1 WHERE `name` = '$toPlayed';");
+    $insertToNotOwn ->execute();
+    header("Refresh:0");
+}
+
 
 function printResults(array $bigArray, array $cycleArray)
 {
@@ -35,40 +58,27 @@ function printResults(array $bigArray, array $cycleArray)
         foreach ($bigArray as $scenario) {
             if ($scenario['cycle'] === $cycle) {
                 $scenarioName = $scenario['name'];
+                $scenarioOwned = $scenario['owned'];
+                $scenarioCompleted = $scenario['completed'];
                 if (isset($scenario['position'])) {
-                $scenarioPosistion =$scenario['position'].". ";
+                    $scenarioPosistion =$scenario['position'].". ";
 
                 } else $scenarioPosistion = $scenario['position'];
 
                 $output .= "<div class='scenarioContainer'><h3>  " . $scenarioPosistion  . $scenarioName . "</h3>";
 
-                if (isset($scenario['owned'])) {
-                    $output .= '<div class="scenarioContent">Owned</div>';
+                if ($scenarioOwned === '1') {
+
+                    $output .= "<form action='collection_main.php' method='post'><button class='scenarioContent' type='submit' name='scenarioToNotOwn' value='$scenarioName'>Owned</button></form>";
                 } else {
-                    $output .= '<div class="scenarioContentNull">Not Owned</div>';
+
+                    $output .= "<form action='collection_main.php' method='post'><button class='scenarioContentNull' type='submit' name='scenarioToOwn' value='$scenarioName'>Not Owned</button></form>";
                 }
 
-                if (isset($scenario['completed'])) {
-                    $output .= '<div class="scenarioContent">Played</div>';
+                if ($scenarioCompleted == 1) {
+                    $output .= "<form action='collection_main.php' method='post'><button class='scenarioContent' type='submit' name='scenarioToNotPlayed' value='$scenarioName'>Played</button></form>";
                 } else {
-                    $output .= '<div class="scenarioContentNull">Not Played</div>';
-                }
-
-                $output .= '</div>';
-            } else if ($scenario['cycle'] === $cycle) {
-                $scenarioName = $scenario['name'];
-                $output .= "<div class='scenarioContainer'><h3>  " . $scenario['position'] . ". " . $scenarioName . "</h3>";
-
-                if (isset($scenario['owned'])) {
-                    $output .= '<div class="scenarioContent">Owned</div>';
-                } else {
-                    $output .= '<div class="scenarioContentNull">Not Owned</div>';
-                }
-
-                if (isset($scenario['completed'])) {
-                    $output .= '<div class="scenarioContent">Played</div>';
-                } else {
-                    $output .= '<div class="scenarioContentNull">Not Played</div>';
+                    $output .= "<form action='collection_main.php' method='post'><button class='scenarioContentNull' type='submit' name='scenarioToPlayed' value='$scenarioName'>Not Played</button></form>";
                 }
 
                 $output .= '</div>';
@@ -81,4 +91,6 @@ function printResults(array $bigArray, array $cycleArray)
     $output .= '</div>';
     return $output;
 }
+
+
 

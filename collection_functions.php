@@ -33,9 +33,14 @@ function printResults(array $bigArray, array $cycleArray)
     foreach ($cycleArray as $cycle) {
         $output .= "<div class='box'><h2>$cycle</h2>";
         foreach ($bigArray as $scenario) {
-            if ($scenario['standalone'] === 1) {
+            if ($scenario['cycle'] === $cycle) {
                 $scenarioName = $scenario['name'];
-                $output .= "<div class='scenarioContainer'><h3>" . $scenarioName . "</h3>";
+                if (isset($scenario['position'])) {
+                $scenarioPosistion =$scenario['position'].". ";
+
+                } else $scenarioPosistion = $scenario['position'];
+
+                $output .= "<div class='scenarioContainer'><h3>  " . $scenarioPosistion  . $scenarioName . "</h3>";
 
                 if (isset($scenario['owned'])) {
                     $output .= '<div class="scenarioContent">Owned</div>';

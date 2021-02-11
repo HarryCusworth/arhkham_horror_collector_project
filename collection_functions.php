@@ -1,9 +1,7 @@
 <?php
 
 
-function getCampaignNames($db)
-{
-
+function getCampaignNames($db) {
     $campaigns = $db->prepare("SELECT DISTINCT `cycle` FROM `scenarios`;");
     $campaigns->setFetchMode(PDO::FETCH_ASSOC);
     $campaigns->execute();
@@ -15,8 +13,7 @@ function getCampaignNames($db)
     return $cycleArray;
 }
 
-function getScenarios($db)
-{
+function getScenarios($db) {
     $queryString = "SELECT * FROM `scenarios` ORDER BY `position`;";
     $query = $db->prepare($queryString);
     $query->setFetchMode(PDO::FETCH_ASSOC);
@@ -25,26 +22,30 @@ function getScenarios($db)
     return $bigArray;
 }
 
-function scenarioToNotOwn($db,$toNotOwn){
-    $insertToNotOwn = $db->prepare("UPDATE scenarios SET owned = 0 WHERE `name` = '$toNotOwn';");
+function scenarioToNotOwn($db,$toNotOwn) {
+    $insertToNotOwn = $db->prepare("UPDATE scenarios SET owned = 0 WHERE `name` =:toNotOwn;");
+    $insertToNotOwn -> bindParam(':toNotOwn', $toNotOwn);
     $insertToNotOwn ->execute();
     header("Refresh:0");
 }
 
-function scenarioToOwn($db,$toOwn){
-    $insertToNotOwn = $db->prepare("UPDATE scenarios SET owned = 1 WHERE `name` = '$toOwn';");
-    $insertToNotOwn ->execute();
+function scenarioToOwn($db,$toOwn) {
+    $insertToOwn = $db->prepare("UPDATE scenarios SET owned = 1 WHERE `name` =:toOwn;");
+    $insertToOwn -> bindParam(':toOwn', $toOwn);
+    $insertToOwn ->execute();
     header("Refresh:0");
 }
 
-function scenarioToNotPlayed($db,$toNotPlayed){
-    $insertToNotOwn = $db->prepare("UPDATE scenarios SET completed = 0 WHERE `name` = '$toNotPlayed';");
-    $insertToNotOwn ->execute();
+function scenarioToNotPlayed($db,$toNotPlayed) {
+    $insertToNotPlayed = $db->prepare("UPDATE scenarios SET completed = 0 WHERE `name` =:toNotPlayed;");
+    $insertToNotPlayed -> bindParam(':toNotPlayed', $toNotPlayed);
+    $insertToNotPlayed ->execute();
     header("Refresh:0");
 }
-function scenarioToPlayed($db,$toPlayed){
-    $insertToNotOwn = $db->prepare("UPDATE scenarios SET completed = 1 WHERE `name` = '$toPlayed';");
-    $insertToNotOwn ->execute();
+function scenarioToPlayed($db,$toPlayed) {
+    $insertToPlayed = $db->prepare("UPDATE scenarios SET completed = 1 WHERE `name` =:toPlayed;");
+    $insertToPlayed -> bindParam(':toPlayed', $toPlayed);
+    $insertToPlayed ->execute();
     header("Refresh:0");
 }
 
@@ -61,11 +62,11 @@ function printResults(array $bigArray, array $cycleArray)
                 $scenarioOwned = $scenario['owned'];
                 $scenarioCompleted = $scenario['completed'];
                 if (isset($scenario['position'])) {
-                    $scenarioPosistion =$scenario['position'].". ";
+                    $scenarioPosition = $scenario['position'].". ";
 
-                } else $scenarioPosistion = $scenario['position'];
+                } else $scenarioPosition = $scenario['position'];
 
-                $output .= "<div class='scenarioContainer'><h3>  " . $scenarioPosistion  . $scenarioName . "</h3>";
+                $output .= "<div class='scenarioContainer'><h3>  " . $scenarioPosition  . $scenarioName . "</h3>";
 
                 if ($scenarioOwned === '1') {
 

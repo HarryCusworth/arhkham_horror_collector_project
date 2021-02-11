@@ -17,7 +17,7 @@ function getCampaignNames($db)
 
 function getScenarios($db)
 {
-    $queryString = "SELECT * FROM `scenarios`;";
+    $queryString = "SELECT * FROM `scenarios` ORDER BY `position`;";
     $query = $db->prepare($queryString);
     $query->setFetchMode(PDO::FETCH_ASSOC);
     $query->execute();

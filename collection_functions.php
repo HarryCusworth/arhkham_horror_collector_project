@@ -13,7 +13,6 @@ function getCampaignNames($db) {
     return $cycleArray;
 }
 
-
 function getScenarios($db) {
     $queryString = "SELECT * FROM `scenarios` ORDER BY `position`;";
     $query = $db->prepare($queryString);

@@ -2,7 +2,6 @@
 
 
 function getCampaignNames($db) {
-
     $campaigns = $db->prepare("SELECT DISTINCT `cycle` FROM `scenarios`;");
     $campaigns->setFetchMode(PDO::FETCH_ASSOC);
     $campaigns->execute();
@@ -13,6 +12,7 @@ function getCampaignNames($db) {
     }
     return $cycleArray;
 }
+
 
 function getScenarios($db) {
     $queryString = "SELECT * FROM `scenarios` ORDER BY `position`;";
@@ -59,11 +59,11 @@ function printResults(array $bigArray, array $cycleArray)
                 $scenarioOwned = $scenario['owned'];
                 $scenarioCompleted = $scenario['completed'];
                 if (isset($scenario['position'])) {
-                    $scenarioPosistion = $scenario['position'].". ";
+                    $scenarioPosition = $scenario['position'].". ";
 
-                } else $scenarioPosistion = $scenario['position'];
+                } else $scenarioPosition = $scenario['position'];
 
-                $output .= "<div class='scenarioContainer'><h3>  " . $scenarioPosistion  . $scenarioName . "</h3>";
+                $output .= "<div class='scenarioContainer'><h3>  " . $scenarioPosition  . $scenarioName . "</h3>";
 
                 if ($scenarioOwned === '1') {
 

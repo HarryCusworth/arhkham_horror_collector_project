@@ -15,50 +15,65 @@ function getCampaignNames($db)
     return $cycleArray;
 }
 
-function getScenariosSimple($db)
+function getScenarios($db)
 {
-    $query = "SELECT * FROM `scenarios`;";
-    $results = $db->prepare($query);
-    $results->setFetchMode(PDO::FETCH_ASSOC);
-    $results->execute();
-    $bigArray = $results->fetchAll();
+    $queryString = "SELECT * FROM `scenarios`;";
+    $query = $db->prepare($queryString);
+    $query->setFetchMode(PDO::FETCH_ASSOC);
+    $query->execute();
+    $bigArray = $query->fetchAll();
     return $bigArray;
 }
 
 
 function printResults(array $bigArray, array $cycleArray)
 {
-    $feedBack = '<div class="flexContainer">';
+    $output = '<div class="flexContainer">';
 
     foreach ($cycleArray as $cycle) {
-        $feedBack .= "<div class='box'><h2>$cycle</h2>";
+        $output .= "<div class='box'><h2>$cycle</h2>";
         foreach ($bigArray as $scenario) {
-            if ($scenario['cycle'] === $cycle) {
-                $feedBack .= "<div class='scenarioContainer'><h3>  " . $scenario['name'] . "</h3>";
+            if ($scenario['standalone'] === "1") {
+                $scenarioName = $scenario['name'];
+                $output .= "<div class='scenarioContainer'><h3>" . $scenarioName . "</h3>";
 
                 if (isset($scenario['owned'])) {
-                    $feedBack .= '<div class="scenarioContent">Owned</div>';
-                }
-
-                else {
-                    $feedBack .= '<div class="scenarioContentNull">Not Owned</div>';
+                    $output .= '<div class="scenarioContent">Owned</div>';
+                } else {
+                    $output .= '<div class="scenarioContentNull">Not Owned</div>';
                 }
 
                 if (isset($scenario['completed'])) {
-                    $feedBack .= '<div class="scenarioContent">Played</div>';
+                    $output .= '<div class="scenarioContent">Played</div>';
+                } else {
+                    $output .= '<div class="scenarioContentNull">Not Played</div>';
                 }
 
-                else {
-                    $feedBack .= '<div class="scenarioContentNull">Not Played</div>';
+                $output .= '</div>';
+            } else if ($scenario['cycle'] === $cycle) {
+                $scenarioName = $scenario['name'];
+                $output .= "<div class='scenarioContainer'><h3>  " . $scenario['position'] . ". " . $scenarioName . "</h3>";
+
+                if (isset($scenario['owned'])) {
+                    $output .= '<div class="scenarioContent">Owned</div>';
+                } else {
+                    $output .= '<div class="scenarioContentNull">Not Owned</div>';
                 }
 
-                $feedBack .= '</div>';
+                if (isset($scenario['completed'])) {
+                    $output .= '<div class="scenarioContent">Played</div>';
+                } else {
+                    $output .= '<div class="scenarioContentNull">Not Played</div>';
+                }
+
+                $output .= '</div>';
             }
 
         }
 
-        $feedBack .= '</div>';
+        $output .= '</div>';
     }
-    $feedBack .= '</div>';
-    return $feedBack;
+    $output .= '</div>';
+    return $output;
 }
+
